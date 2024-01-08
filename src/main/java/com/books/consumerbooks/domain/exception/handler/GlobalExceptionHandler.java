@@ -1,6 +1,7 @@
 package com.books.consumerbooks.domain.exception.handler;
 
 import com.books.consumerbooks.domain.builder.ExceptionResponseBuilder;
+import com.books.consumerbooks.domain.exception.DatabaseException;
 import com.books.consumerbooks.domain.exception.KafkaException;
 import com.books.consumerbooks.domain.response.ExceptionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,16 @@ public class GlobalExceptionHandler {
 
         ExceptionResponse exceptionResponse =
                 responseBuilder.getExceptionResponse(INTERNAL_SERVER_ERROR);
+
+        return exceptionResponse;
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(DatabaseException.class)
+    public ExceptionResponse handleDatabaseException(DatabaseException exception) {
+
+        ExceptionResponse exceptionResponse =
+                responseBuilder.getExceptionResponse(exception.getMessage());
 
         return exceptionResponse;
     }

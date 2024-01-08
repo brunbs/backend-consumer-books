@@ -4,5 +4,6 @@ public class ConstantUtils {
 
     public static final String INTERNAL_SERVER_ERROR = "Internal Server Error";
     public static final String KAFKA_COMMUNICATION_ERROR = "Error Creating Message to Kafka Topic";
+    public static final String DB_PERSISTENCE_ERROR = "Error While Persisting Data";
 
 }
