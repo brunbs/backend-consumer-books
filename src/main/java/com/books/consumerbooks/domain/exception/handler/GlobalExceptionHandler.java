@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(KafkaException.class)
     public ExceptionResponse handleKafkaException(KafkaException exception) {
 
         ExceptionResponse exceptionResponse =
